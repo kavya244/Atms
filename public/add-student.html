@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Student Attendance</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #1f4037, #99f2c8);
+      color: #fff;
+      text-align: center;
+      padding: 40px;
+      font-size: 20px;
+    }
+    form {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 25px;
+      margin: auto;
+      width: 400px;
+      border-radius: 12px;
+    }
+    input, select {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+    }
+    button {
+      font-size: 18px;
+      padding: 10px 20px;
+      background: #00c9a7;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    h2 {
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px black;
+    }
+  </style>
+</head>
+<body>
+  <h2>Add Student Attendance</h2>
+  <form id="studentForm">
+    <input type="text" id="name" placeholder="Student Name" required><br>
+    <input type="text" id="subject" placeholder="Subject" required><br>
+
+    <label for="sem">Semester:</label>
+    <select id="sem">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+    </select><br><br>
+
+    <label for="branch">Branch:</label>
+    <select id="branch">
+      <option value="CSE">CSE</option>
+      <option value="ISE">ISE</option>
+      <option value="AIML">AI/ML</option>
+      <option value="ECE">Electronics</option>
+    </select><br><br>
+
+    <label>Status:</label>
+    <input type="radio" name="status" value="Present" checked> Present
+    <input type="radio" name="status" value="Absent"> Absent<br><br>
+
+    <button type="submit">Submit Attendance</button>
+  </form>
+
+  <script>
+    document.getElementById("studentForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const subject = document.getElementById("subject").value;
+      const sem = document.getElementById("sem").value;
+      const branch = document.getElementById("branch").value;
+      const status = document.querySelector("input[name='status']:checked").value;
+      const timestamp = new Date().toLocaleString();
+
+      const student = { name, subject, sem, branch, status, timestamp };
+
+      const students = JSON.parse(localStorage.getItem("students") || "[]");
+      students.push(student);
+      localStorage.setItem("students", JSON.stringify(students));
+
+      alert("Student added successfully!");
+      window.location.href = "student-list.html";
+    });
+  </script>
+</body>
+</html>

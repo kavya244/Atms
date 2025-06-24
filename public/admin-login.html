@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+</head>
+<body class="login">
+  <div class="login-container">
+    <h2>Admin Login</h2>
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <p id="error"></p>
+  </div>
+  <script>
+    const firebaseConfig = {
+	 apiKey: "AIzaSyCaNp8cuBTdwZmjFFmbn8I4RS5-BCKKo_Y",
+ 	 authDomain: "attendancesystem-961fc.firebaseapp.com",
+ 	 projectId: "attendancesystem-961fc",
+ 	 storageBucket: "attendancesystem-961fc.firebasestorage.app",
+ 	 messagingSenderId: "709690804288",
+  	appId: "1:709690804288:web:cab312acaec9f49eb6b7a5"
+	};    
+firebase.initializeApp(firebaseConfig);
+    function login() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(() => window.location.href = "dashboard.html")
+        .catch(error => document.getElementById('error').innerText = error.message);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+body {
+  font-family: Arial, sans-serif;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+  text-align: center;
+  font-size: 22px;
+  margin: 0;
+  padding: 0;
+}
+
+body.login {
+  background-image: url('images/login-bg.jpg');
+}
+
+body.dashboard {
+  background-image: url('images/dashboard-bg.jpg');
+}
+
+body.about {
+  background-image: url('images/about-bg.jpg');
+}
+
+body.student-list {
+  background-image: url('images/students-bg.jpg');
+}
+
+.login-container {
+  margin: 100px auto;
+  width: 350px;
+  padding: 30px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 15px;
+}
+
+input, button {
+  font-size: 18px;
+  padding: 12px;
+  width: 95%;
+  border-radius: 8px;
+  margin-top: 10px;
+}

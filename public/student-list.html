@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Attendance List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<style>
+a.button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 20px auto;
+  font-size: 18px;
+  background-color: #00c9a7;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+a.button:hover {
+  background-color: #009e88;
+}
+</style>
+<body class="student-list">
+  <h2>Student Attendance List</h2>
+  <table border="1" style="margin:auto; background:white; color:black; font-size:18px;">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Subject</th>
+        <th>Semester</th>
+        <th>Branch</th>
+        <th>Status</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody id="studentTableBody"></tbody>
+  </table>
+<a href="dashboard.html" class="button">Back to Dashboard</a>
+
+  <script>
+    const students = JSON.parse(localStorage.getItem("students") || "[]");
+    const tbody = document.getElementById("studentTableBody");
+
+    students.forEach(student => {
+      const row = `<tr>
+        <td>${student.name}</td>
+        <td>${student.subject}</td>
+        <td>${student.sem}</td>
+        <td>${student.branch}</td>
+        <td>${student.status}</td>
+        <td>${student.timestamp}</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  </script>
+</body>
+</html>
